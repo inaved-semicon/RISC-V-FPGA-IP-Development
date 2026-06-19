@@ -1,7 +1,6 @@
 # Task-1 — Environment Setup & RISC-V Reference Bring-Up
 
-[![Tools](https://img.shields.io/badge/Tools-Yosys%20%7C%20icestorm%20%7C%20riscv-gnu-toolchain%20%7C%20spike%20%7C%20nextpnr%20%7C%20Icarus-blue)](#)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tools](https://img.shields.io/badge/Tools-Yosys%20%7C%20Nextpnr%20%7C%20Icestorm%20%7C%20Iverilog%20%7C%20RISCV%20%7C%20Spike%20-blue)](#)
 [![OS](https://img.shields.io/badge/OS-Ubuntu%20%7C%20Debian-orange)](#)
 
 Name: Keyur Dobariya
