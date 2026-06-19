@@ -31,3 +31,69 @@ Tools Installed:
 
 ---
 
+# Task Execution
+
+[Step 1](Sample/README.md) : Verify that the RISC-V toolchain and execution flow are working correctly by compiling and executing a simple C program.
+
+[Step 2](vsdfpga_labs/README.md) : Run the reference RISC-V firmware on the **VSDSquadron FPGA Mini** and receive UART output on the host system through a USB-to-UART converter.
+
+# Understanding
+
+## 1. Where is the RISC-V program located in the repository?
+    The RISC-V program is located inside the software/firmware section of the repository.
+
+    The source program is generally written in C (.c) or Assembly (.S) and contains instructions that will execute on the RISC-V processor.
+
+## 2. How is the program compiled and loaded into memory?
+    The program is compiled using the RISC-V GNU Toolchain.
+    
+    Example:
+    riscv64-unknown-elf-gcc program.c -o program
+
+    After compilation:
+
+    Machine instructions are generated.
+    Output is converted into memory initialization format (.hex, .mem, etc.).
+    During simulation or execution, memory is preloaded with this firmware.
+
+## 3. How does the RISC-V core access memory and memory-mapped IO?
+    The RISC-V core communicates using a memory bus.
+
+    The CPU generates:
+
+    Address
+    Read Enable
+    Write Enable
+    Write Data
+
+    The SoC checks the address and decides whether access goes to:
+
+    RAM
+    UART
+    GPIO
+    Other peripherals
+
+## 4. Where would a new FPGA IP block logically integrate in this system?
+    A new FPGA IP block integrates inside the SoC as another memory-mapped peripheral.
+
+    System structure:
+
+    CPU
+    ↓
+    System Bus
+    ↓
+    Address Decoder
+    ├── RAM
+    ├── UART
+    ├── LED
+    └── New IP
+
+    Integration steps:
+
+    1. Create RTL module
+    2. Instantiate inside SoC
+    3. Assign address range
+    4. Connect bus interface
+    5. Enable software access
+
+---
