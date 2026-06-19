@@ -1,4 +1,4 @@
-# Task-1 Submission — Environment Setup & RISC-V Reference Bring-Up
+# Task-1 — Environment Setup & RISC-V Reference Bring-Up
 
 Name: Keyur Dobariya
 
