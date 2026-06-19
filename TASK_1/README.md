@@ -24,5 +24,7 @@ Tools Installed:
 - RISC-V GNU Toolchain
 - spike
 
+![installation verification](Installation_verification.png)
+
 ---
 
