@@ -1,0 +1,17 @@
+riscv64-unknown-elf-gcc -I ./LIBFEMTOGL -I ./LIBFEMTORV32 -I ./LIBFEMTOC -fno-pic -march=rv32i -mabi=ilp32 -fno-stack-protector -w -Wl,--no-relax  -c gpio_test.c
+riscv64-unknown-elf-ld -T bram.ld -m elf32lriscv -nostdlib gpio_test.o putchar.o wait.o print.o memcpy.o errno.o perf.o ./libgcc.a -o gpio_test.bram.elf
+/home/keyur/riscv/bin/riscv64-unknown-elf-ld: warning: gpio_test.bram.elf has a LOAD segment with RWX permissions
+./firmware_words gpio_test.bram.elf -ram 6144 -max_addr 6144 -out gpio_test.bram.hex
+   RAM SIZE=6144
+   LOAD ELF: gpio_test.bram.elf
+       max address=4106
+Code size: 1026 words ( total RAM size: 1536 words )
+Occupancy: 66%
+testing MAX_ADDR limit: 6144
+   max_addr OK
+   SAVE HEX: gpio_test.bram.hex
+cp gpio_test.bram.hex ../RTL/firmware.hex
+mkdir -p ../RTL/obj_dir
+cp gpio_test.bram.hex ../RTL/obj_dir/firmware.hex
+echo gpio_test.bram.hex > ../RTL/firmware.txt
+rm gpio_test.bram.elf gpio_test.o
