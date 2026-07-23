@@ -1,0 +1,24 @@
+riscv64-unknown-elf-as -march=rv32i -mabi=ilp32  start.S -o start.o 
+riscv64-unknown-elf-as -march=rv32i -mabi=ilp32  putchar.S -o putchar.o 
+riscv64-unknown-elf-as -march=rv32i -mabi=ilp32  wait.S -o wait.o 
+riscv64-unknown-elf-gcc -I ./LIBFEMTOGL -I ./LIBFEMTORV32 -I ./LIBFEMTOC -fno-pic -march=rv32i -mabi=ilp32 -fno-stack-protector -w -Wl,--no-relax  -c print.c
+riscv64-unknown-elf-gcc -I ./LIBFEMTOGL -I ./LIBFEMTORV32 -I ./LIBFEMTOC -fno-pic -march=rv32i -mabi=ilp32 -fno-stack-protector -w -Wl,--no-relax  -c memcpy.c
+riscv64-unknown-elf-gcc -I ./LIBFEMTOGL -I ./LIBFEMTORV32 -I ./LIBFEMTOC -fno-pic -march=rv32i -mabi=ilp32 -fno-stack-protector -w -Wl,--no-relax  -c errno.c
+riscv64-unknown-elf-as -march=rv32i -mabi=ilp32  perf.S -o perf.o 
+riscv64-unknown-elf-gcc -I ./LIBFEMTOGL -I ./LIBFEMTORV32 -I ./LIBFEMTOC -fno-pic -march=rv32i -mabi=ilp32 -fno-stack-protector -w -Wl,--no-relax  -c pwm_test.c
+riscv64-unknown-elf-ld -T bram.ld -m elf32lriscv -nostdlib pwm_test.o putchar.o wait.o print.o memcpy.o errno.o perf.o ./libgcc.a -o pwm_test.bram.elf
+/home/keyur/riscv/bin/riscv64-unknown-elf-ld: warning: pwm_test.bram.elf has a LOAD segment with RWX permissions
+./firmware_words pwm_test.bram.elf -ram 6144 -max_addr 6144 -out pwm_test.bram.hex
+   RAM SIZE=6144
+   LOAD ELF: pwm_test.bram.elf
+       max address=2970
+Code size: 742 words ( total RAM size: 1536 words )
+Occupancy: 48%
+testing MAX_ADDR limit: 6144
+   max_addr OK
+   SAVE HEX: pwm_test.bram.hex
+cp pwm_test.bram.hex ../RTL/firmware.hex
+mkdir -p ../RTL/obj_dir
+cp pwm_test.bram.hex ../RTL/obj_dir/firmware.hex
+echo pwm_test.bram.hex > ../RTL/firmware.txt
+rm pwm_test.bram.elf pwm_test.o

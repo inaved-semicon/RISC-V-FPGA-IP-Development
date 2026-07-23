@@ -1,0 +1,118 @@
+sudo picocom -b 9600 /dev/ttyUSB0    --imap lfcrlf,crcrlf --omap delbs,crlf --send-cmd "ascii-xfr -s -l 30 -n"
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 9600
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : ascii-xfr -s -l 30 -n
+receive_cmd is : rz -vv -E
+imap is        : crcrlf,lfcrlf,
+omap is        : crlf,delbs,
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+
+************************************************************
+*                                                          *
+*        I N N O V A T E   •   B U I L D   •   L E A R N   *
+*                                                          *
+*                  I N A V E D   S E M I C O N             *
+*                                                          *
+*               P O W E R E D   B Y   R I S C - V          *
+*                                                          *
+*                     C R E A T E D   B Y                  *
+*                K E Y U R   D O B A R I Y A               *
+*                                                          *
+************************************************************
+

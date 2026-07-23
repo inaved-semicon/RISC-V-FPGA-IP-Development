@@ -1,0 +1,262 @@
+$date
+	Thu Jul  9 10:42:39 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module gpio_tb $end
+$var wire 32 ! gpio_pin [31:0] $end
+$var wire 32 " rdata [31:0] $end
+$var reg 32 # addr [31:0] $end
+$var reg 1 $ clk $end
+$var reg 1 % reset $end
+$var reg 1 & valid $end
+$var reg 32 ' wdata [31:0] $end
+$var reg 4 ( wmask [3:0] $end
+$scope module uut $end
+$var wire 32 ) addr [31:0] $end
+$var wire 1 $ clk $end
+$var wire 32 * gpio_pin [31:0] $end
+$var wire 1 % reset $end
+$var wire 1 & valid $end
+$var wire 32 + wdata [31:0] $end
+$var wire 4 , wmask [3:0] $end
+$var wire 32 - gpio_read [31:0] $end
+$var reg 32 . gpio_data [31:0] $end
+$var reg 32 / gpio_dir [31:0] $end
+$var reg 32 0 rdata [31:0] $end
+$scope begin pin_logic[0] $end
+$var parameter 2 1 i $end
+$upscope $end
+$scope begin pin_logic[1] $end
+$var parameter 2 2 i $end
+$upscope $end
+$scope begin pin_logic[2] $end
+$var parameter 3 3 i $end
+$upscope $end
+$scope begin pin_logic[3] $end
+$var parameter 3 4 i $end
+$upscope $end
+$scope begin pin_logic[4] $end
+$var parameter 4 5 i $end
+$upscope $end
+$scope begin pin_logic[5] $end
+$var parameter 4 6 i $end
+$upscope $end
+$scope begin pin_logic[6] $end
+$var parameter 4 7 i $end
+$upscope $end
+$scope begin pin_logic[7] $end
+$var parameter 4 8 i $end
+$upscope $end
+$scope begin pin_logic[8] $end
+$var parameter 5 9 i $end
+$upscope $end
+$scope begin pin_logic[9] $end
+$var parameter 5 : i $end
+$upscope $end
+$scope begin pin_logic[10] $end
+$var parameter 5 ; i $end
+$upscope $end
+$scope begin pin_logic[11] $end
+$var parameter 5 < i $end
+$upscope $end
+$scope begin pin_logic[12] $end
+$var parameter 5 = i $end
+$upscope $end
+$scope begin pin_logic[13] $end
+$var parameter 5 > i $end
+$upscope $end
+$scope begin pin_logic[14] $end
+$var parameter 5 ? i $end
+$upscope $end
+$scope begin pin_logic[15] $end
+$var parameter 5 @ i $end
+$upscope $end
+$scope begin pin_logic[16] $end
+$var parameter 6 A i $end
+$upscope $end
+$scope begin pin_logic[17] $end
+$var parameter 6 B i $end
+$upscope $end
+$scope begin pin_logic[18] $end
+$var parameter 6 C i $end
+$upscope $end
+$scope begin pin_logic[19] $end
+$var parameter 6 D i $end
+$upscope $end
+$scope begin pin_logic[20] $end
+$var parameter 6 E i $end
+$upscope $end
+$scope begin pin_logic[21] $end
+$var parameter 6 F i $end
+$upscope $end
+$scope begin pin_logic[22] $end
+$var parameter 6 G i $end
+$upscope $end
+$scope begin pin_logic[23] $end
+$var parameter 6 H i $end
+$upscope $end
+$scope begin pin_logic[24] $end
+$var parameter 6 I i $end
+$upscope $end
+$scope begin pin_logic[25] $end
+$var parameter 6 J i $end
+$upscope $end
+$scope begin pin_logic[26] $end
+$var parameter 6 K i $end
+$upscope $end
+$scope begin pin_logic[27] $end
+$var parameter 6 L i $end
+$upscope $end
+$scope begin pin_logic[28] $end
+$var parameter 6 M i $end
+$upscope $end
+$scope begin pin_logic[29] $end
+$var parameter 6 N i $end
+$upscope $end
+$scope begin pin_logic[30] $end
+$var parameter 6 O i $end
+$upscope $end
+$scope begin pin_logic[31] $end
+$var parameter 6 P i $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b11111 P
+b11110 O
+b11101 N
+b11100 M
+b11011 L
+b11010 K
+b11001 J
+b11000 I
+b10111 H
+b10110 G
+b10101 F
+b10100 E
+b10011 D
+b10010 C
+b10001 B
+b10000 A
+b1111 @
+b1110 ?
+b1101 >
+b1100 =
+b1011 <
+b1010 ;
+b1001 :
+b1000 9
+b111 8
+b110 7
+b101 6
+b100 5
+b11 4
+b10 3
+b1 2
+b0 1
+$end
+#0
+$dumpvars
+bx 0
+bx /
+bx .
+bx -
+b0 ,
+b0 +
+bx *
+b0 )
+b0 (
+b0 '
+0&
+1%
+0$
+b0 #
+bx "
+bx !
+$end
+#5000
+b1010101010101010zzzzzzzzzzzzzzzz -
+b1010101010101010zzzzzzzzzzzzzzzz !
+b1010101010101010zzzzzzzzzzzzzzzz *
+b0 "
+b0 0
+b0 /
+b0 .
+1$
+#10000
+0$
+#15000
+1$
+#20000
+0$
+0%
+#25000
+1$
+#26000
+b1111111111111111 '
+b1111111111111111 +
+b100000000000000000000000000100 #
+b100000000000000000000000000100 )
+b1111 (
+b1111 ,
+1&
+#30000
+0$
+#35000
+b10101010101010100000000000000000 !
+b10101010101010100000000000000000 *
+b10101010101010100000000000000000 -
+b1111111111111111 "
+b1111111111111111 0
+b1111111111111111 /
+1$
+#36000
+b0 "
+b0 0
+b10010001101000101011001111000 '
+b10010001101000101011001111000 +
+b100000000000000000000000000000 #
+b100000000000000000000000000000 )
+#40000
+0$
+#45000
+b10101010101010100101011001111000 !
+b10101010101010100101011001111000 *
+b10101010101010100101011001111000 -
+b10010001101000101011001111000 "
+b10010001101000101011001111000 0
+b10010001101000101011001111000 .
+1$
+#46000
+b10101010101010100101011001111000 "
+b10101010101010100101011001111000 0
+b100000000000000000000000001000 #
+b100000000000000000000000001000 )
+b0 (
+b0 ,
+#50000
+0$
+#55000
+1$
+#56000
+0&
+#60000
+0$
+#65000
+1$
+#70000
+0$
+#75000
+1$
+#80000
+0$
+#85000
+1$
+#86000

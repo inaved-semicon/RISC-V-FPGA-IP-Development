@@ -1,0 +1,520 @@
+yosys -q -p "synth_ice40 -abc9 -device u -dsp -top SOC -json SOC.json" riscv.v
+nextpnr-ice40 --force --json SOC.json --pcf VSDSquadronFM.pcf --asc SOC.asc --freq 10 --up5k --package sg48 --opt-timing
+Info: constrained 'LEDS[0]' to bel 'X4/Y31/io0'
+Info: constrained 'LEDS[1]' to bel 'X6/Y31/io0'
+Info: constrained 'LEDS[2]' to bel 'X5/Y31/io0'
+Info: constrained 'LEDS[3]' to bel 'X19/Y31/io1'
+Info: constrained 'LEDS[4]' to bel 'X18/Y31/io0'
+Info: constrained 'RESET' to bel 'X19/Y31/io0'
+Info: constrained 'TXD' to bel 'X9/Y0/io0'
+Info: constrained 'RXD' to bel 'X9/Y0/io1'
+
+Info: Packing constants..
+Info: Packing IOs..
+Info: Packing LUT-FFs..
+Info:     1104 LCs used as LUT4 only
+Info:      107 LCs used as LUT4 and DFF
+Info: Packing non-LUT FFs..
+Info:       69 LCs used as DFF only
+Info: Packing carries..
+Info:        2 LCs used as CARRY only
+Info: Packing indirect carry+LUT pairs...
+Info:        1 LUTs merged into carry LCs
+Info: Packing RAMs..
+Info: Placing PLLs..
+Info: Packing special functions..
+Info:   constrained ICESTORM_HFOSC 'hfosc_OSC' to X0/Y31/hfosc_1
+Info:     Derived frequency constraint of 12.0 MHz for net clk
+Info: Packing PLLs..
+Info: Promoting globals..
+Info: promoting RESET_SB_DFFR_R_Q_SB_LUT4_I0_O_SB_LUT4_I0_O[1] [reset] (fanout 103)
+Info: promoting RESET$SB_IO_IN [reset] (fanout 16)
+Info: promoting CPU.instr_SB_DFFE_Q_E [cen] (fanout 32)
+Info: promoting GPIO_IP.rdata_SB_DFFESR_Q_E [cen] (fanout 32)
+Info: promoting CPU.PC_SB_DFFESR_Q_30_E_SB_LUT4_O_I0_SB_LUT4_I1_O [cen] (fanout 30)
+Info: promoting UART.o_ready_SB_DFFESS_Q_E_SB_LUT4_O_I3_SB_LUT4_O_I2_SB_LUT4_I1_O_SB_LUT4_I2_O [cen] (fanout 16)
+Info: Constraining chains...
+Info:        3 LCs used to legalise carry chains.
+Info: Checksum: 0xb643c5d8
+
+Info: Device utilisation:
+Info: 	         ICESTORM_LC:    1286/   5280    24%
+Info: 	        ICESTORM_RAM:      16/     30    53%
+Info: 	               SB_IO:       8/     39    20%
+Info: 	               SB_GB:       7/      8    87%
+Info: 	        ICESTORM_PLL:       0/      1     0%
+Info: 	         SB_WARMBOOT:       0/      1     0%
+Info: 	        ICESTORM_DSP:       0/      8     0%
+Info: 	      ICESTORM_HFOSC:       1/      1   100%
+Info: 	      ICESTORM_LFOSC:       0/      1     0%
+Info: 	              SB_I2C:       0/      2     0%
+Info: 	              SB_SPI:       0/      2     0%
+Info: 	              IO_I3C:       0/      2     0%
+Info: 	         SB_LEDDA_IP:       0/      1     0%
+Info: 	         SB_RGBA_DRV:       0/      1     0%
+Info: 	      ICESTORM_SPRAM:       0/      4     0%
+
+Info: Placed 10 cells based on constraints.
+Info: Creating initial analytic placement for 1128 cells, random placement wirelen = 35435.
+Info:     at initial placer iter 0, wirelen = 350
+Info:     at initial placer iter 1, wirelen = 419
+Info:     at initial placer iter 2, wirelen = 433
+Info:     at initial placer iter 3, wirelen = 415
+Info: Running main analytical placer, max placement attempts per cell = 217140.
+Info:     at iteration #1, type ALL: wirelen solved = 433, spread = 9897, legal = 10637; time = 0.37s
+Info:     at iteration #2, type ALL: wirelen solved = 492, spread = 9804, legal = 10940; time = 0.21s
+Info:     at iteration #3, type ALL: wirelen solved = 533, spread = 10668, legal = 11593; time = 0.33s
+Info:     at iteration #4, type ALL: wirelen solved = 649, spread = 11130, legal = 11596; time = 0.17s
+Info:     at iteration #5, type ALL: wirelen solved = 757, spread = 10765, legal = 11271; time = 0.30s
+Info:     at iteration #6, type ALL: wirelen solved = 865, spread = 11556, legal = 11920; time = 0.37s
+Info: HeAP Placer Time: 2.03s
+Info:   of which solving equations: 0.48s
+Info:   of which spreading cells: 0.04s
+Info:   of which strict legalisation: 1.41s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 1248, wirelen = 10637
+Info:   at iteration #5: temp = 0.000000, timing cost = 1055, wirelen = 8155
+Info:   at iteration #10: temp = 0.000000, timing cost = 1069, wirelen = 7664
+Info:   at iteration #15: temp = 0.000000, timing cost = 1087, wirelen = 7480
+Info:   at iteration #20: temp = 0.000000, timing cost = 1075, wirelen = 7315
+Info:   at iteration #25: temp = 0.000000, timing cost = 1076, wirelen = 7280
+Info:   at iteration #30: temp = 0.000000, timing cost = 1075, wirelen = 7261
+Info:   at iteration #31: temp = 0.000000, timing cost = 1075, wirelen = 7260 
+Info: SA placement time 3.49s
+
+Info: Max frequency for clock 'clk': 16.08 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>     -> posedge clk: 9.49 ns
+Info: Max delay posedge clk -> <async>    : 15.82 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 4 endpoint(s)
+Info:          + represents [1,4) endpoint(s)
+Info: [ 21155,  24072) |************+
+Info: [ 24072,  26989) |+
+Info: [ 26989,  29906) |***+
+Info: [ 29906,  32823) |***********+
+Info: [ 32823,  35740) |*************+
+Info: [ 35740,  38657) |********+
+Info: [ 38657,  41574) |***+
+Info: [ 41574,  44491) |*+
+Info: [ 44491,  47408) | 
+Info: [ 47408,  50325) |*+
+Info: [ 50325,  53242) |**+
+Info: [ 53242,  56159) |**********+
+Info: [ 56159,  59076) |*****************+
+Info: [ 59076,  61993) |************************************************************ 
+Info: [ 61993,  64910) |****************************+
+Info: [ 64910,  67827) |**+
+Info: [ 67827,  70744) |***+
+Info: [ 70744,  73661) |**+
+Info: [ 73661,  76578) |**********+
+Info: [ 76578,  79495) |******************************+
+Info: Checksum: 0x932163e7
+Info: Running timing-driven placement optimisation...
+Info:    Iteration 0...
+Info:    Iteration 1...
+Info:    Iteration 2...
+Info:    Iteration 3...
+Info:    Iteration 4...
+Info:    Iteration 5...
+Info:    Iteration 6...
+Info:    Iteration 7...
+Info:    Iteration 8...
+Info:    Iteration 9...
+Info:    Iteration 10...
+Info:    Iteration 11...
+Info:    Iteration 12...
+Info:    Iteration 13...
+Info:    Iteration 14...
+Info:    Iteration 15...
+Info:    Iteration 16...
+Info:    Iteration 17...
+Info:    Iteration 18...
+Info:    Iteration 19...
+Info:    Iteration 20...
+Info:    Iteration 21...
+Info:    Iteration 22...
+Info:    Iteration 23...
+Info:    Iteration 24...
+Info:    Iteration 25...
+Info:    Iteration 26...
+Info:    Iteration 27...
+Info:    Iteration 28...
+Info:    Iteration 29...
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 4948 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |      251        748 |  251   748 |      4247|       0.89       0.89|
+Info:       2000 |      561       1438 |  310   690 |      3707|       0.56       1.45|
+Info:       3000 |     1041       1958 |  480   520 |      3436|       0.73       2.18|
+Info:       4000 |     1548       2435 |  507   477 |      3240|       0.85       3.03|
+Info:       5000 |     2067       2905 |  519   470 |      2991|       0.77       3.80|
+Info:       6000 |     2619       3353 |  552   448 |      2808|       0.69       4.50|
+Info:       7000 |     3181       3791 |  562   438 |      2675|       0.75       5.24|
+Info:       8000 |     3769       4203 |  588   412 |      2598|       0.71       5.95|
+Info:       9000 |     4404       4568 |  635   365 |      2573|       0.75       6.71|
+Info:      10000 |     5013       4959 |  609   391 |      2488|       0.81       7.52|
+Info:      11000 |     5633       5339 |  620   380 |      2428|       0.85       8.37|
+Info:      12000 |     6271       5701 |  638   362 |      2411|       0.95       9.31|
+Info:      13000 |     6861       6111 |  590   410 |      2313|       0.74      10.06|
+Info:      14000 |     7464       6508 |  603   397 |      2277|       0.73      10.79|
+Info:      15000 |     8118       6854 |  654   346 |      2231|       0.81      11.60|
+Info:      16000 |     8676       7296 |  558   442 |      2203|       0.82      12.42|
+Info:      17000 |     9323       7649 |  647   353 |      2104|       0.85      13.27|
+Info:      18000 |     9964       8008 |  641   359 |      2003|       0.92      14.18|
+Info:      19000 |    10587       8359 |  623   351 |      1940|       0.91      15.09|
+Info:      20000 |    11249       8671 |  662   312 |      1842|       0.92      16.01|
+Info:      21000 |    11950       8970 |  701   299 |      1813|       0.88      16.90|
+Info:      22000 |    12605       9313 |  655   343 |      1731|       0.88      17.78|
+Info:      23000 |    13256       9662 |  651   349 |      1680|       0.93      18.71|
+Info:      24000 |    13975       9943 |  719   281 |      1677|       1.14      19.85|
+Info:      25000 |    14736      10182 |  761   239 |      1684|       1.04      20.89|
+Info:      26000 |    15367      10550 |  631   368 |      1626|       0.93      21.82|
+Info:      27000 |    16013      10904 |  646   354 |      1592|       0.92      22.74|
+Info:      28000 |    16783      11134 |  770   230 |      1565|       1.02      23.75|
+Info:      29000 |    17444      11473 |  661   339 |      1512|       0.86      24.62|
+Info:      30000 |    18154      11763 |  710   290 |      1487|       1.23      25.85|
+Info:      31000 |    18833      12084 |  679   321 |      1472|       1.00      26.85|
+Info:      32000 |    19561      12356 |  728   272 |      1454|       1.06      27.91|
+Info:      33000 |    20343      12574 |  782   218 |      1440|       1.27      29.18|
+Info:      34000 |    20989      12928 |  646   354 |      1338|       1.22      30.40|
+Info:      35000 |    21748      13169 |  759   241 |      1326|       1.34      31.74|
+Info:      36000 |    22413      13504 |  665   335 |      1329|       1.15      32.89|
+Info:      37000 |    23095      13822 |  682   318 |      1222|       1.28      34.17|
+Info:      38000 |    23661      14256 |  566   434 |      1235|       0.88      35.05|
+Info:      39000 |    24398      14519 |  737   263 |      1229|       1.24      36.29|
+Info:      40000 |    25088      14829 |  690   310 |      1165|       1.28      37.57|
+Info:      41000 |    25800      15117 |  712   288 |      1114|       1.02      38.59|
+Info:      42000 |    26384      15533 |  584   416 |      1078|       0.88      39.47|
+Info:      43000 |    27146      15771 |  762   238 |      1052|       2.27      41.74|
+Info:      44000 |    27838      16079 |  692   308 |      1028|       1.43      43.17|
+Info:      45000 |    28589      16328 |  751   249 |      1028|       1.20      44.37|
+Info:      46000 |    29330      16587 |  741   259 |       996|       1.59      45.96|
+Info:      47000 |    30012      16903 |  682   316 |       971|       1.28      47.24|
+Info:      48000 |    30662      17229 |  650   326 |       884|       1.27      48.51|
+Info:      49000 |    31364      17527 |  702   298 |       849|       1.45      49.96|
+Info:      50000 |    32053      17838 |  689   311 |       809|       1.65      51.61|
+Info:      51000 |    32794      18097 |  741   259 |       787|       1.11      52.73|
+Info:      52000 |    33484      18407 |  690   310 |       819|       1.72      54.45|
+Info:      53000 |    34151      18740 |  667   333 |       778|       1.14      55.59|
+Info:      54000 |    34841      19050 |  690   310 |       751|       1.74      57.33|
+Info:      55000 |    35584      19307 |  743   257 |       714|       2.02      59.35|
+Info:      56000 |    36301      19590 |  717   283 |       694|       1.92      61.27|
+Info:      57000 |    36991      19900 |  690   310 |       671|       1.82      63.09|
+Info:      58000 |    37598      20268 |  607   368 |       518|       1.83      64.92|
+Info:      59000 |    38347      20519 |  749   251 |       500|       2.00      66.92|
+Info:      60000 |    39123      20743 |  776   224 |       510|       2.56      69.48|
+Info:      61000 |    39844      21022 |  721   279 |       522|       2.03      71.51|
+Info:      62000 |    40584      21282 |  740   260 |       498|       2.39      73.90|
+Info:      63000 |    41175      21678 |  591   396 |       375|       2.48      76.38|
+Info:      64000 |    41827      22026 |  652   348 |       304|       2.34      78.71|
+Info:      65000 |    42576      22277 |  749   251 |       312|       2.69      81.40|
+Info:      66000 |    43284      22569 |  708   292 |       300|       2.30      83.70|
+Info:      67000 |    43998      22855 |  714   286 |       304|       1.78      85.49|
+Info:      68000 |    44693      23151 |  695   296 |       271|       2.90      88.39|
+Info:      69000 |    45248      23596 |  555   445 |        58|       3.20      91.59|
+Info:      69283 |    45398      23730 |  150   134 |         0|       2.03      93.62|
+Info: Routing complete.
+Info: Router1 time 93.62s
+Info: Checksum: 0x18680e58
+
+Info: Critical path report for clock 'clk' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  1.39  1.39 Source CPU.instr_SB_DFFE_Q_28_DFFLC.O
+Info:    routing  2.95  4.34 Net CPU.instr[3] (15,27) -> (17,25)
+Info:                          Sink CPU.state_SB_DFFESR_Q_D_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_LUT4_O_LC.I0
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.28  5.63 Source CPU.state_SB_DFFESR_Q_D_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_LUT4_O_LC.O
+Info:    routing  4.69  10.31 Net CPU.state_SB_DFFESR_Q_D_SB_LUT4_O_1_I3_SB_LUT4_O_I3[3] (17,25) -> (4,21)
+Info:                          Sink CPU.state_SB_DFFESR_Q_D_SB_LUT4_O_2_I3_SB_LUT4_O_I3_SB_LUT4_O_LC.I1
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.23  11.54 Source CPU.state_SB_DFFESR_Q_D_SB_LUT4_O_2_I3_SB_LUT4_O_I3_SB_LUT4_O_LC.O
+Info:    routing  2.95  14.49 Net CPU.state_SB_DFFESR_Q_D_SB_LUT4_O_2_I3_SB_LUT4_O_I3[3] (4,21) -> (2,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_I1_SB_LUT4_O_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  15.37 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_I1_SB_LUT4_O_LC.O
+Info:    routing  1.76  17.13 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_I1[2] (2,20) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_I1_SB_LUT4_I2_LC.I2
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.61  17.74 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_I1_SB_LUT4_I2_LC.COUT
+Info:    routing  0.00  17.74 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI (3,19) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.28  18.02 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_LC.COUT
+Info:    routing  0.00  18.02 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI (3,19) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_I1_SB_LUT4_I2_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.28  18.30 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CO_I1_SB_LUT4_I2_LC.COUT
+Info:    routing  0.00  18.30 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_I2[3] (3,19) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  18.57 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_I3_SB_LUT4_O_LC.COUT
+Info:    routing  0.00  18.57 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI (3,19) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  18.85 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  18.85 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI (3,19) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  19.13 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  19.13 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI (3,19) -> (3,19)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  19.41 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.COUT
+Info:    routing  0.56  19.96 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI (3,19) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  20.24 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  20.24 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  20.52 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_CARRY_CO_CI_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  20.52 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  20.80 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_CO_CI_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  20.80 Net GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_I3 (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  21.08 Source GPIO_IP.addr_SB_LUT4_O_1_I3_SB_LUT4_O_LC.COUT
+Info:    routing  0.00  21.08 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3 (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  21.35 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_LC.COUT
+Info:    routing  0.00  21.35 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  21.63 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  21.63 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  21.91 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_LC.COUT
+Info:    routing  0.00  21.91 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_1_I3 (3,20) -> (3,20)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_1_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  22.19 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_1_LC.COUT
+Info:    routing  0.56  22.74 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3 (3,20) -> (3,21)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  23.02 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_LC.COUT
+Info:    routing  0.00  23.02 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO (3,21) -> (3,21)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  23.30 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_LUT4_I3_LC.COUT
+Info:    routing  0.00  23.30 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO (3,21) -> (3,21)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  23.58 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_LC.COUT
+Info:    routing  0.00  23.58 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (3,21) -> (3,21)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_LC.CIN
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.28  23.85 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_LC.COUT
+Info:    routing  0.66  24.52 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (3,21) -> (3,21)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_LC.I3
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.87  25.39 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_LC.O
+Info:    routing  1.76  27.15 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O[0] (3,21) -> (3,21)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_LC.I0
+Info:                          Defined in:
+Info:                               riscv.v:191.33-191.62
+Info:                               /usr/bin/../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.28  28.44 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_LC.O
+Info:    routing  2.95  31.39 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_O[2] (3,21) -> (5,23)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_O_SB_LUT4_I0_LC.I2
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.21  32.59 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_O_SB_LUT4_I0_LC.O
+Info:    routing  2.95  35.54 Net GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_O[2] (5,23) -> (3,26)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_O_SB_LUT4_I1_LC.I2
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.21  36.75 Source GPIO_IP.addr_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_O_2_I3_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_LUT4_I3_O_SB_LUT4_I0_O_SB_LUT4_I1_LC.O
+Info:    routing  1.76  38.51 Net GPIO_IP.addr_SB_LUT4_I2_1_O_SB_LUT4_O_2_I0[0] (3,26) -> (4,25)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_I2_1_O_SB_LUT4_O_2_LC.I0
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.28  39.79 Source GPIO_IP.addr_SB_LUT4_I2_1_O_SB_LUT4_O_2_LC.O
+Info:    routing  1.76  41.56 Net GPIO_IP.addr_SB_LUT4_I2_1_O[3] (4,25) -> (5,24)
+Info:                          Sink GPIO_IP.addr_SB_LUT4_I2_1_O_SB_LUT4_I0_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  42.43 Source GPIO_IP.addr_SB_LUT4_I2_1_O_SB_LUT4_I0_LC.O
+Info:    routing  3.06  45.49 Net RESET_SB_DFFR_R_Q_SB_LUT4_I0_O_SB_LUT4_I0_O[2] (5,24) -> (5,28)
+Info:                          Sink RAM.MEM.0.10_RDATA_4_SB_LUT4_O_1_LC.I2
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.21  46.69 Source RAM.MEM.0.10_RDATA_4_SB_LUT4_O_1_LC.O
+Info:    routing  2.95  49.64 Net CPU.mem_rdata_SB_LUT4_O_10_I1[2] (5,28) -> (2,24)
+Info:                          Sink CPU.mem_rdata_SB_LUT4_O_23_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  50.52 Source CPU.mem_rdata_SB_LUT4_O_23_LC.O
+Info:    routing  3.49  54.01 Net mem_rdata[23] (2,24) -> (7,23)
+Info:                          Sink CPU.RegisterBank.0.0_WDATA_1_SB_LUT4_O_I1_SB_LUT4_O_2_I2_SB_LUT4_O_I3_SB_LUT4_O_LC.I2
+Info:                          Defined in:
+Info:                               riscv.v:326.16-326.25
+Info:      logic  1.21  55.22 Source CPU.RegisterBank.0.0_WDATA_1_SB_LUT4_O_I1_SB_LUT4_O_2_I2_SB_LUT4_O_I3_SB_LUT4_O_LC.O
+Info:    routing  2.99  58.21 Net CPU.RegisterBank.0.0_WDATA_1_SB_LUT4_O_I1_SB_LUT4_O_2_I2_SB_LUT4_O_I3[3] (7,23) -> (3,23)
+Info:                          Sink CPU.mem_rdata_SB_LUT4_O_29_I2_SB_LUT4_I3_O_SB_LUT4_I2_O_SB_LUT4_O_1_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  59.08 Source CPU.mem_rdata_SB_LUT4_O_29_I2_SB_LUT4_I3_O_SB_LUT4_I2_O_SB_LUT4_O_1_LC.O
+Info:    routing  2.41  61.49 Net CPU.mem_rdata_SB_LUT4_O_29_I2_SB_LUT4_I3_O_SB_LUT4_I2_O[3] (3,23) -> (2,21)
+Info:                          Sink CPU.RegisterBank.0.1_WDATA_5_SB_LUT4_O_I1_SB_LUT4_O_2_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  62.37 Source CPU.RegisterBank.0.1_WDATA_5_SB_LUT4_O_I1_SB_LUT4_O_2_LC.O
+Info:    routing  1.76  64.13 Net CPU.RegisterBank.0.1_WDATA_5_SB_LUT4_O_I1[3] (2,21) -> (2,20)
+Info:                          Sink CPU.RegisterBank.0.1_WDATA_5_SB_LUT4_O_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  65.00 Source CPU.RegisterBank.0.1_WDATA_5_SB_LUT4_O_LC.O
+Info:    routing  5.77  70.77 Net CPU.RegisterBank.0.1_WDATA_5 (2,20) -> (19,27)
+Info:                          Sink CPU.RegisterBank.1.1_RAM.WDATA_10
+Info:      setup  0.10  70.87 Source CPU.RegisterBank.1.1_RAM.WDATA_10
+Info: 23.12 ns logic, 47.75 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge clk':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source RESET$sb_io.D_IN_0
+Info:    routing  1.75  1.75 Net RESET$SB_IO_IN (19,31) -> (19,31)
+Info:                          Sink $gbuf_RESET$SB_IO_IN_$glb_sr.USER_SIGNAL_TO_GLOBAL_BUFFER
+Info:                          Defined in:
+Info:                               riscv.v:316.17-316.22
+Info:      logic  1.59  3.34 Source $gbuf_RESET$SB_IO_IN_$glb_sr.GLOBAL_BUFFER_OUTPUT
+Info:    routing  0.63  3.97 Net RESET$SB_IO_IN_$glb_sr (19,31) -> (1,20)
+Info:                          Sink RESET_SB_DFFR_R_15_Q_SB_LUT4_I2_LC.SR
+Info:      setup  0.10  4.07 Source RESET_SB_DFFR_R_15_Q_SB_LUT4_I2_LC.SR
+Info: 1.69 ns logic, 2.38 ns routing
+
+Info: Critical path report for cross-domain path 'posedge clk' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  1.39  1.39 Source UART.data_SB_DFFE_Q_D_SB_LUT4_O_3_LC.O
+Info:    routing  1.76  3.15 Net UART.data[5] (16,20) -> (16,20)
+Info:                          Sink TXD_SB_LUT4_O_I3_SB_LUT4_O_I2_SB_LUT4_O_LC.I0
+Info:                          Defined in:
+Info:                               emitter_uart.v:20.19-20.23
+Info:      logic  1.28  4.43 Source TXD_SB_LUT4_O_I3_SB_LUT4_O_I2_SB_LUT4_O_LC.O
+Info:    routing  1.76  6.20 Net TXD_SB_LUT4_O_I3_SB_LUT4_O_I2[2] (16,20) -> (16,19)
+Info:                          Sink TXD_SB_LUT4_O_I3_SB_LUT4_O_LC.I2
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  1.21  7.40 Source TXD_SB_LUT4_O_I3_SB_LUT4_O_LC.O
+Info:    routing  1.76  9.16 Net TXD_SB_LUT4_O_I3[1] (16,19) -> (16,19)
+Info:                          Sink TXD_SB_LUT4_O_LC.I3
+Info:                          Defined in:
+Info:                               /usr/bin/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.87  10.04 Source TXD_SB_LUT4_O_LC.O
+Info:    routing  6.19  16.23 Net TXD$SB_IO_OUT (16,19) -> (9,0)
+Info:                          Sink TXD$sb_io.D_OUT_0
+Info:                          Defined in:
+Info:                               emitter_uart.v:11.21-11.30
+Info: 4.75 ns logic, 11.48 ns routing
+
+Info: Max frequency for clock 'clk': 14.11 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>     -> posedge clk: 4.07 ns
+Info: Max delay posedge clk -> <async>    : 16.23 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 5 endpoint(s)
+Info:          + represents [1,5) endpoint(s)
+Info: [ 12459,  15804) |*********+
+Info: [ 15804,  19149) |**+
+Info: [ 19149,  22494) |*+
+Info: [ 22494,  25839) |***+
+Info: [ 25839,  29184) |**********+
+Info: [ 29184,  32529) |*********+
+Info: [ 32529,  35874) |***********+
+Info: [ 35874,  39219) |+
+Info: [ 39219,  42564) | 
+Info: [ 42564,  45909) | 
+Info: [ 45909,  49254) |*+
+Info: [ 49254,  52599) |****+
+Info: [ 52599,  55944) |********************** 
+Info: [ 55944,  59289) |************************************************************ 
+Info: [ 59289,  62634) |**+
+Info: [ 62634,  65979) |**********************+
+Info: [ 65979,  69324) |** 
+Info: [ 69324,  72669) |+
+Info: [ 72669,  76014) |*********+
+Info: [ 76014,  79359) |**************************+
+
+Info: Program finished normally.
+icetime -p VSDSquadronFM.pcf -P sg48 -r SOC.timings -d up5k -t SOC.asc
+// Reading input .pcf file..
+// Reading input .asc file..
+// Reading 5k chipdb file..
+// Creating timing netlist..
+Warning: timing analysis not supported for cell type HFOSC
+// Timing estimate: 71.93 ns (13.90 MHz)
+icepack -s SOC.asc SOC.bin

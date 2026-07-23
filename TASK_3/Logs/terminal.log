@@ -1,0 +1,36 @@
+sudo picocom -b 9600 /dev/ttyUSB0 --imap lfcrlf,crcrlf --omap delbs,crlf --send-cmd "ascii-xfr -s -l 30 -n"
+picocom v3.1
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 9600
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+hangup is      : no
+nolock is      : no
+send_cmd is    : ascii-xfr -s -l 30 -n
+receive_cmd is : rz -vv -E
+imap is        : crcrlf,lfcrlf,
+omap is        : crlf,delbs,
+emap is        : crcrlf,delbs,
+logfile is     : none
+initstring     : none
+exit_after is  : not set
+exit is        : no
+
+Type [C-a] [C-h] to see available commands
+Terminal ready
+Starting Task 3 GPIO Test...
+Direction set to 0x0000FFFF
+Wrote 0x12345678 to GPIO_DATA
+Read value from GPIO_READ: 0x12345678
+Test Complete.
+
+Terminating...
+Skipping tty reset...
+Thanks for using picocom

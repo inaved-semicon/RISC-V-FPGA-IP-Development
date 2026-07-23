@@ -1,0 +1,9 @@
+VCD info: dumpfile pwm_tb.vcd opened for output.
+Sampled 10 cycles, pwm_out was HIGH for 3 cycles (expected 3).
+PASS: Duty ratio verified (3/10 = 30%).
+After DUTY=7: high for 7/10 cycles (expected 7).
+PASS: Duty update verified (7/10 = 70%).
+With POL=1, DUTY=7: high for 3/10 cycles (expected 3).
+PASS: Polarity inversion verified.
+PASS: EN=0 with POL=1 forces output high (inactive).
+PASS: EN=0 with POL=0 forces output low (inactive).
