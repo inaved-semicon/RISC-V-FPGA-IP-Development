@@ -168,7 +168,8 @@ Cycle done. DUTY back to 0.
 ...
 ```
 
-<video src="[PASTE_YOUR_LINK_HERE](https://github.com/user-attachments/assets/092d2807-ce8e-463d-bfad-1fd827c11f3e)" controls width="500"></video>
+<video src="https://github.com/user-attachments/assets/092d2807-ce8e-463d-bfad-1fd827c11f3e" controls width="500"></video>
+
 
 Simultaneously, **LED0 fades smoothly up and down** on the VSDSquadron FPGA Mini board.
 
